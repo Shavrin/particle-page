@@ -13,11 +13,13 @@ window.onload = () => {
 
     simulator.start();
 };
+
 window.onresize = () => {
     const canvas = document.getElementsByTagName("canvas")[0];
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 }
+
 class Simulator {
     constructor(context){
         this.particles = [];
@@ -38,7 +40,7 @@ class Simulator {
                     particle.x = Math.floor(Math.random() * window.innerWidth);
                 }
                 else
-                    particle.y += 1;
+                    particle.y += particle.size / 5;
 
                 this.context.beginPath();
                 this.context.arc(particle.x,particle.y, particle.size,0, 2 * Math.PI);
@@ -59,7 +61,6 @@ class Simulator {
         this.context.fillRect(0,0,window.innerWidth, window.innerHeight);
     }
 }
-
 
 class Particle {
     constructor(){
