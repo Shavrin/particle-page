@@ -1,7 +1,7 @@
 {
     "manifest_version" : 2,
     "name" : "Particle Page",
-    "version" : "1.1",
+    "version" : "1.2",
     "description" : "Adds a new startpage with simulated particles.",
     "icons" : {
       "48": "icons/48.png"

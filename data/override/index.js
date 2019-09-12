@@ -12,6 +12,9 @@ window.onload = () => {
     }
 
     simulator.start();
+    document.addEventListener('visibilitychange', (e) => {
+        document.hidden ? simulator.pause() : simulator.start();
+    }, false);
 };
 
 window.onresize = () => {
@@ -24,6 +27,7 @@ class Simulator {
     constructor(context){
         this.particles = [];
         this.context = context;
+        this.updateInterval = null;
     }
 
     addParticle(){
@@ -53,7 +57,13 @@ class Simulator {
     }
 
     start(){
-        setInterval(this.update.bind(this), 40);
+        if(!this.updateInterval)
+            this.updateInterval = setInterval(this.update.bind(this), 40);
+    }
+
+    pause(){
+        clearInterval(this.updateInterval);
+        this.updateInterval = null;
     }
 
     clearCanvas(){
